@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Same head as index.html -->
+</head>
+<body>
+    <header class="main-header">
+        <!-- Same header as index.html -->
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                <li><a href="habits.html" class="nav-link">Habits</a></li>
+                <li><a href="rewards.html" class="nav-link">Rewards</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="faq.html" class="nav-link">FAQ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container habit-tracker">
+        <h1>Track Your Habits</h1>
+        
+        <div class="habit-grid">
+            <div class="habit-card" data-habit="recycling">
+                <img src="recycling.jpg" alt="Recycling">
+                <h3>Recycling</h3>
+                <p>10 points per day</p>
+                <button class="btn btn-primary btn-track">Track Today</button>
+            </div>
+            
+            <div class="habit-card" data-habit="biking">
+                <img src="biking.jpg" alt="Biking">
+                <h3>Biking to Work</h3>
+                <p>20 points per day</p>
+                <button class="btn btn-primary btn-track">Track Today</button>
+            </div>
+            
+            <!-- Add more habits -->
+        </div>
+    </main>
+
+    <script src="js/tracker.js"></script>
+</body>
+</html>

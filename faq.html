@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Same head as index.html -->
+    <style>
+        .faq-item {
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .faq-question {
+            padding: 15px;
+            background: #f9f9f9;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-answer {
+            padding: 0 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .faq-item.active .faq-answer {
+            padding: 15px;
+            max-height: 300px;
+        }
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+        }
+        .faq-item.active .faq-question::after {
+            content: '-';
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <!-- Same header as index.html -->
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                <li><a href="habits.html" class="nav-link">Habits</a></li>
+                <li><a href="rewards.html" class="nav-link">Rewards</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="faq.html" class="nav-link">FAQ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container faq-page">
+        <h1>Frequently Asked Questions</h1>
+        
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-question">How do I earn points?</div>
+                <div class="faq-answer">
+                    <p>Track your eco-friendly habits daily through our Habits page. Each action has a point value.</p>
+                </div>
+            </div>
+            
+            <!-- More FAQ items -->
+        </div>
+    </main>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                question.parentElement.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

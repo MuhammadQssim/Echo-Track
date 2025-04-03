@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Track your eco-friendly habits and earn rewards">
+    <title>EcoTrack | Sustainable Living</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="echo track logo.png" alt="EcoTrack Logo" width="120">
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                    <li><a href="habits.html" class="nav-link">Habits</a></li>
+                    <li><a href="rewards.html" class="nav-link">Rewards</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="faq.html" class="nav-link">FAQ</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="register.html" class="btn btn-primary">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Small Actions, <span class="highlight">Big Impact</span></h1>
+                <p>Track your sustainable habits and earn rewards for saving the planet</p>
+                <a href="register.html" class="btn btn-primary btn-lg pulse">Get Started</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <h3 id="totalUsers">10,000+</h3>
+                    <p>Active Users</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="co2Saved">1,200+</h3>
+                    <p>KG CO₂ Saved</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="video-demo">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="video-wrapper">
+                <video controls poster="assets/video/thumb.jpg">
+                    <source src="assets/video/tutorial.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2023 EcoTrack. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script>
+        // Animated counters
+        function animateValue(id, start, end, duration) {
+            let obj = document.getElementById(id);
+            let range = end - start;
+            let current = start;
+            let increment = end > start ? 1 : -1;
+            let stepTime = Math.abs(Math.floor(duration / range));
+            let timer = setInterval(() => {
+                current += increment;
+                obj.innerHTML = current + '+';
+                if (current == end) clearInterval(timer);
+            }, stepTime);
+        }
+
+        animateValue("totalUsers", 0, 10000, 2000);
+        animateValue("co2Saved", 0, 1200, 2000);
+    </script>
+</body>
+</html>

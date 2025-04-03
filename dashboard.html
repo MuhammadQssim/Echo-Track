@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | EcoTrack</title>
+    <!-- CSS Links (FIXED PATHS) -->
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Dashboard-specific styles */
+        body {
+            padding-top: 70px;
+        }
+        .stat-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        .progress-bar {
+            height: 20px;
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        .progress-fill {
+            height: 100%;
+            background: #2ecc71;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION (FIXED LINKS) -->
+    <header class="main-header">
+        <div class="container">
+            <a href="./index.html" class="logo">
+                <img src="echo track.png" alt="EcoTrack" width="120">
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./dashboard.html" class="active">Dashboard</a></li>
+                    <li><a href="./habits.html">Habits</a></li>
+                    <li><a href="./rewards.html">Rewards</a></li>
+                    <li><a href="./about.html">About</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <button id="logoutBtn" class="btn btn-outline">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- DASHBOARD CONTENT -->
+    <main class="container">
+        <h1>Your Eco Progress</h1>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <i class="fas fa-coins"></i>
+                <h3 id="userPoints">0</h3>
+                <p>Total Points</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-fire"></i>
+                <h3 id="streak">0</h3>
+                <p>Day Streak</p>
+            </div>
+        </div>
+
+        <div class="progress-container">
+            <h3>Next Reward: <span id="nextReward">Eco Warrior (200pts)</span></h3>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <p id="pointsToGo">200 points to go</p>
+        </div>
+    </main>
+
+    <!-- REQUIRED SCRIPTS -->
+    <script src="./js/auth.js"></script>
+    <script>
+        // 1. CHECK AUTH FIRST
+        document.addEventListener('DOMContentLoaded', function() {
+            const user = JSON.parse(localStorage.getItem('currentUser'));
+            
+            if (!user) {
+                window.location.href = './login.html';
+                return;
+            }
+
+            // 2. POPULATE DATA
+            document.getElementById('userPoints').textContent = user.points || 0;
+            document.getElementById('streak').textContent = user.streak || 0;
+            
+            // 3. PROGRESS BAR
+            const targetPoints = 200;
+            const progress = Math.min((user.points / targetPoints) * 100, 100);
+            document.getElementById('progressFill').style.width = `${progress}%`;
+            document.getElementById('pointsToGo').textContent = 
+                `${Math.max(targetPoints - user.points, 0)} points to go`;
+
+            // 4. LOGOUT FUNCTION
+            document.getElementById('logoutBtn').addEventListener('click', function() {
+                localStorage.removeItem('currentUser');
+                window.location.href = './index.html';
+            });
+        });
+    </script>
+</body>
+</html>
